@@ -1,0 +1,795 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="A self-study module for New Jersey middle school students on the Anti-Bullying Bill of Rights Act (HIB).">
+<title>Tigers Know the ABR</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50,4 61,36 96,36 68,57 79,92 50,71 21,92 32,57 4,36 39,36' fill='%23F5B800' stroke='%23141210' stroke-width='6'/%3E%3C/svg%3E">
+<style>
+@font-face{font-family:"Bangers";font-weight:400;font-display:swap;src:url(fonts/bangers-400.woff2) format("woff2")}
+@font-face{font-family:"Comic Neue";font-weight:700;font-display:swap;src:url(fonts/comic-neue-700.woff2) format("woff2")}
+@font-face{font-family:"Atkinson Hyperlegible";font-weight:400;font-display:swap;src:url(fonts/atkinson-400.woff2) format("woff2")}
+@font-face{font-family:"Atkinson Hyperlegible";font-weight:400;font-style:italic;font-display:swap;src:url(fonts/atkinson-400-italic.woff2) format("woff2")}
+@font-face{font-family:"Atkinson Hyperlegible";font-weight:700;font-display:swap;src:url(fonts/atkinson-700.woff2) format("woff2")}
+</style>
+<style>
+/* Layout: a comic book. Cover masthead, a strip of page thumbnails for navigation, then each lesson laid out as inked panels,
+   caption boxes, and speech bubbles on a halftone page. Deliberately single-theme (printed comic on paper). */
+:root{
+  color-scheme:light;
+  --page:#F4F1E8;      /* newsprint ground behind panels */
+  --dots:#E3DCC6;      /* halftone dot color */
+  --panel:#FFFFFF;
+  --ink:#141210;       /* comic ink, also Tigers black */
+  --soft:#4A453B;
+  --gold:#F5B800;      /* Tigers gold: caption boxes, highlights */
+  --gold-pale:#FFF0B8;
+  --pow:#E5432E;       /* myth / stop / wrong */
+  --pow-pale:#FDE0DA;
+  --zap:#1E8FD8;       /* heads-up / info */
+  --zap-pale:#DCEFFC;
+  --go:#1E9150;        /* fact / correct */
+  --go-pale:#DDF3E5;
+  --care:#8E4BB0;
+  --care-pale:#F0E3F7;
+  --display:"Bangers", "Impact", "Arial Black", sans-serif;
+  --letter:"Comic Neue", "Comic Sans MS", "Trebuchet MS", sans-serif;
+  --body:"Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --fs:17px; --line:3px; --drop:5px 5px 0 var(--ink);
+}
+*{box-sizing:border-box}
+body{background-color:var(--page);background-image:radial-gradient(var(--dots) 1.6px, transparent 1.8px);background-size:14px 14px;color:var(--ink);font-family:var(--body);font-size:var(--fs);line-height:1.6}
+body.big{--fs:20px}
+h1,h2,h3,h4{margin:0;font-weight:400}
+p{margin:0}
+a{color:var(--zap)}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:4px solid var(--zap);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* ---------- Cover masthead ---------- */
+.cover{background:var(--ink);color:#fff;border-bottom:var(--line) solid var(--ink);position:relative;overflow:hidden}
+.cover::before{content:"";position:absolute;inset:0;background:repeating-conic-gradient(from 0deg at 82% 120%, rgba(245,184,0,.22) 0 6deg, transparent 6deg 14deg);pointer-events:none}
+.cover-in{max-width:1080px;margin:0 auto;padding-block:18px 20px;padding-inline:16px;display:flex;flex-wrap:wrap;gap:12px 24px;align-items:flex-end;justify-content:space-between;position:relative}
+.issue{display:inline-block;background:var(--gold);color:var(--ink);font-family:var(--letter);font-weight:700;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border:2px solid #fff;transform:rotate(-2deg)}
+.cover h1{font-family:var(--display);font-size:clamp(2.6rem,8vw,4.6rem);line-height:.95;letter-spacing:.03em;color:var(--gold);
+  text-shadow:3px 3px 0 #fff, 6px 6px 0 rgba(255,255,255,.25);margin-top:8px}
+.cover .sub{font-family:var(--letter);font-weight:700;font-size:1.05rem;color:#fff;max-width:46ch;margin-top:8px}
+.tools{display:flex;gap:8px;flex-wrap:wrap}
+.tbtn{background:#fff;color:var(--ink);border:2px solid #fff;padding:6px 14px;font-family:var(--letter);font-weight:700;font-size:.9rem;box-shadow:3px 3px 0 var(--gold)}
+.tbtn:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--gold)}
+.tbtn[aria-pressed="true"]{background:var(--gold)}
+
+/* ---------- Page strip (navigation) ---------- */
+.strip{background:var(--panel);border-bottom:var(--line) solid var(--ink)}
+.strip-in{max-width:1080px;margin:0 auto;padding-block:12px;padding-inline:16px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.strip ol{list-style:none;margin:0;padding:4px 6px 8px 2px;display:flex;gap:8px;overflow-x:auto;flex:1 1 520px;min-width:0;scrollbar-width:thin}
+.rail-btn{display:flex;flex-direction:column;align-items:center;gap:4px;background:none;border:0;padding:0;min-width:58px}
+.dot{width:46px;height:52px;display:grid;place-items:center;background:var(--panel);border:var(--line) solid var(--ink);font-family:var(--display);font-size:1.4rem;letter-spacing:.04em;box-shadow:3px 3px 0 var(--ink);transition:transform .12s}
+.rail-btn:hover:not(:disabled) .dot{transform:translate(-2px,-2px) rotate(-2deg)}
+.done .dot{background:var(--gold)}
+.rail-btn[aria-current="step"] .dot{background:var(--ink);color:var(--gold);transform:rotate(-3deg)}
+.rail-btn:disabled{cursor:not-allowed}
+.rail-btn:disabled .dot{background:repeating-linear-gradient(135deg,#eee 0 6px,#fff 6px 12px);color:#aaa;border-color:#bbb;box-shadow:none}
+.rl{font-family:var(--letter);font-weight:700;font-size:.7rem;line-height:1.1;text-align:center;max-width:70px;color:var(--soft)}
+.rail-btn[aria-current="step"] .rl{color:var(--ink)}
+@media (max-width:700px){.rl{display:none}.rail-btn{min-width:44px}.dot{width:40px;height:44px;font-size:1.2rem}}
+.meter{display:flex;flex-direction:column;gap:4px;font-family:var(--letter);font-weight:700;font-size:.85rem;flex:0 1 200px}
+.meter-track{height:14px;border:2px solid var(--ink);background:var(--panel);overflow:hidden}
+.meter-fill{height:100%;width:0;background:repeating-linear-gradient(135deg,var(--gold) 0 8px,#FFD34D 8px 16px);border-right:2px solid var(--ink);transition:width .4s}
+
+/* ---------- Page ---------- */
+.shell{max-width:1080px;margin:0 auto;padding-block:28px 64px;padding-inline:16px}
+main{min-width:0;outline:none}
+.lesson{max-width:860px;margin:0 auto;display:flex;flex-direction:column;gap:22px}
+.splash{position:relative;background:var(--panel);border:var(--line) solid var(--ink);box-shadow:var(--drop);padding:34px 22px 22px;overflow:hidden}
+.splash::after{content:"";position:absolute;right:-30px;top:-30px;width:180px;height:180px;background:radial-gradient(var(--gold) 2.2px,transparent 2.6px) 0 0/11px 11px;border-radius:50%;opacity:.9}
+.caption{display:inline-block;background:var(--gold);border:2px solid var(--ink);font-family:var(--letter);font-weight:700;font-size:.82rem;text-transform:uppercase;letter-spacing:.06em;padding:3px 10px;position:absolute;left:-2px;top:-2px}
+.splash h2{font-family:var(--display);font-size:clamp(2.1rem,6vw,3.4rem);line-height:1;letter-spacing:.03em;text-wrap:balance;position:relative;z-index:1;margin-top:6px}
+.splash .mins{font-family:var(--letter);font-weight:700;color:var(--soft);margin-top:8px;position:relative;z-index:1}
+
+.panel{background:var(--panel);border:var(--line) solid var(--ink);box-shadow:var(--drop);padding:20px 22px;display:flex;flex-direction:column;gap:12px}
+.panel > .lead:first-child{margin:-20px -22px 4px;padding:14px 22px;background:var(--gold-pale);border-bottom:var(--line) solid var(--ink)}
+.lead{font-size:1.12em;line-height:1.55}
+.panel h3{font-family:var(--display);font-size:1.6rem;letter-spacing:.04em;line-height:1.05;margin-top:4px}
+.muted{color:var(--soft)}
+ul.tidy{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+ul.tidy li{padding-left:28px;position:relative}
+ul.tidy li::before{content:"";position:absolute;left:2px;top:.3em;width:17px;height:17px;background:var(--ink);clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
+ul.tidy li::after{content:"";position:absolute;left:5px;top:calc(.3em + 3.5px);width:11px;height:11px;background:var(--gold);clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%)}
+
+/* Callouts: SFX-labelled panels */
+.callout{position:relative;background:var(--panel);border:var(--line) solid var(--ink);box-shadow:var(--drop);padding:28px 22px 18px;display:flex;flex-direction:column;gap:6px;margin-top:12px}
+.callout h4{font-family:var(--letter);font-weight:700;font-size:1.1rem}
+.sfx{position:absolute;top:-19px;left:14px;font-family:var(--display);font-size:1.35rem;letter-spacing:.06em;padding:4px 14px 2px;border:var(--line) solid var(--ink);transform:rotate(-3deg);color:#fff}
+.callout.key{background:var(--gold-pale)} .callout.key .sfx{background:var(--gold);color:var(--ink)}
+.callout.info{background:var(--zap-pale)} .callout.info .sfx{background:var(--zap)}
+.callout.care{background:var(--care-pale)} .callout.care .sfx{background:var(--care)}
+.callout.warn{background:var(--pow-pale)} .callout.warn .sfx{background:var(--pow)}
+.tag{align-self:flex-start;display:inline-block;font-family:var(--letter);font-weight:700;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;padding:2px 10px;background:var(--gold);border:2px solid var(--ink)}
+
+/* Definition builder: tabs as small panels */
+.def{display:flex;flex-direction:column}
+.def-tabs{display:flex;flex-wrap:wrap;gap:8px;position:relative;z-index:1;margin-bottom:-3px}
+.def-tab{background:#fff;border:var(--line) solid var(--ink);border-bottom-width:0;padding:8px 14px 6px;font-family:var(--display);font-size:1.15rem;letter-spacing:.05em}
+.def-tab[aria-selected="true"]{background:var(--gold);padding-bottom:9px}
+.def-tab.seen:not([aria-selected="true"]){background:var(--gold-pale)}
+.def-panel{background:var(--panel);border:var(--line) solid var(--ink);box-shadow:var(--drop);padding:20px 22px;display:flex;flex-direction:column;gap:14px}
+.legal{font-size:.92em;background:var(--page);border:2px dashed var(--ink);padding:10px 14px}
+.legal b{font-family:var(--letter)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--letter);font-weight:700;font-size:.85rem;background:#fff;border:2px solid var(--ink);border-radius:18px 18px 18px 4px;padding:3px 12px}
+details.statute{background:var(--panel);border:var(--line) solid var(--ink);box-shadow:var(--drop)}
+details.statute summary{padding:12px 18px;cursor:pointer;font-family:var(--letter);font-weight:700}
+details.statute .s-body{padding:0 18px 18px;font-size:.92em;display:flex;flex-direction:column;gap:8px}
+
+/* Myth / fact cards */
+.flips{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,250px),1fr));gap:24px 18px;padding-top:10px}
+.flip{position:relative;background:var(--panel);border:var(--line) solid var(--ink);box-shadow:var(--drop);padding:34px 16px 14px;text-align:left;display:flex;flex-direction:column;gap:10px;min-height:170px;transition:transform .12s}
+.flip:hover{transform:rotate(-1deg)}
+.flip .side-label{position:absolute;top:-18px;left:10px;font-family:var(--display);font-size:1.5rem;letter-spacing:.05em;color:#fff;background:var(--pow);border:var(--line) solid var(--ink);padding:2px 14px 0;transform:rotate(-4deg)}
+.flip .ftxt{font-family:var(--letter);font-weight:700;font-size:1.08rem;line-height:1.35}
+.flip.open{background:var(--go-pale)}
+.flip.open .side-label{background:var(--go)}
+.flip.open .ftxt{font-family:var(--body);font-weight:400;font-size:1rem;line-height:1.5}
+.flip .hint{margin-top:auto;font-size:.8rem;color:var(--soft);font-family:var(--letter);font-weight:700}
+
+/* Pairs: A VS B */
+.pair{background:var(--panel);border:var(--line) solid var(--ink);box-shadow:var(--drop);padding:18px;display:flex;flex-direction:column;gap:14px}
+.pair-opts{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:12px;align-items:stretch}
+@media (max-width:620px){.pair-opts{grid-template-columns:minmax(0,1fr)}}
+.vs{align-self:center;justify-self:center;font-family:var(--display);font-size:1.5rem;color:#fff;background:var(--pow);width:64px;height:64px;display:grid;place-items:center;clip-path:polygon(50% 0,61% 22%,85% 15%,78% 39%,100% 50%,78% 61%,85% 85%,61% 78%,50% 100%,39% 78%,15% 85%,22% 61%,0 50%,22% 39%,15% 15%,39% 22%)}
+.pair-opt{background:#fff;border:var(--line) solid var(--ink);padding:14px;text-align:left;display:flex;flex-direction:column;gap:6px;transition:transform .12s, box-shadow .12s}
+.pair-opt:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink)}
+.pair-opt.picked{background:var(--gold-pale);box-shadow:4px 4px 0 var(--ink)}
+.pair-opt .lbl{font-family:var(--display);font-size:1.2rem;letter-spacing:.05em}
+.fb{border:2px solid var(--ink);padding:12px 14px;display:flex;flex-direction:column;gap:6px}
+.fb.good{background:var(--go-pale)} .fb.meh{background:var(--gold-pale)} .fb.no{background:var(--pow-pale)}
+.fb strong{font-family:var(--letter);font-weight:700;font-size:1.05rem}
+
+/* What would you do: speech bubble scene */
+.choose{background:var(--panel);border:var(--line) solid var(--ink);box-shadow:var(--drop);padding:18px;display:flex;flex-direction:column;gap:10px}
+.bubble{position:relative;font-family:var(--letter);font-weight:700;font-size:1.12rem;line-height:1.4;background:#fff;border:var(--line) solid var(--ink);border-radius:30px;padding:16px 22px;margin-bottom:22px}
+.bubble::before{content:"";position:absolute;left:42px;bottom:-24px;width:34px;height:24px;background:var(--ink);clip-path:polygon(0 0,100% 0,8% 100%)}
+.bubble::after{content:"";position:absolute;left:46px;bottom:-17px;width:24px;height:18px;background:#fff;clip-path:polygon(0 0,100% 0,6% 100%)}
+.opt{background:#fff;border:2px solid var(--ink);padding:10px 14px;text-align:left;box-shadow:3px 3px 0 var(--ink);transition:transform .1s, box-shadow .1s}
+.opt:hover:not(:disabled){transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--ink)}
+.opt:active:not(:disabled){transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+.opt:disabled{cursor:default}
+.opt.sel-best,.q .opt.right{background:var(--go-pale)}
+.opt.sel-ok{background:var(--gold-pale)}
+.opt.sel-no,.q .opt.wrong{background:var(--pow-pale)}
+
+/* Steps: sequential panels */
+ol.steps{list-style:none;counter-reset:s;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px}
+ol.steps li{counter-increment:s;position:relative;background:var(--panel);border:var(--line) solid var(--ink);box-shadow:var(--drop);padding:40px 16px 16px}
+ol.steps li::before{content:counter(s);position:absolute;left:-2px;top:-2px;width:38px;height:34px;background:var(--ink);color:var(--gold);display:grid;place-items:center;font-family:var(--display);font-size:1.4rem}
+ol.steps b{display:block;font-family:var(--letter);font-weight:700;font-size:1.1rem;margin-bottom:4px}
+
+/* Timeline: a strip of clock panels */
+.tl{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:16px;counter-reset:t}
+.tl-item{counter-increment:t;background:var(--panel);border:var(--line) solid var(--ink);box-shadow:var(--drop);display:flex;flex-direction:column;gap:4px;padding:0 16px 16px}
+.tl-when{margin:0 -16px 8px;padding:6px 16px;background:var(--gold);border-bottom:var(--line) solid var(--ink);font-family:var(--letter);font-weight:700;font-size:.85rem;text-transform:uppercase;letter-spacing:.04em}
+.tl-when::before{content:counter(t) " · "}
+.tl-what{font-family:var(--letter);font-weight:700;font-size:1.05rem;line-height:1.3}
+
+/* Mean vs HIB comparison */
+.versus{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:14px;align-items:start}
+@media (max-width:720px){.versus{grid-template-columns:minmax(0,1fr)}.versus .vs{margin:-4px auto}}
+.vcol{background:var(--panel);border:var(--line) solid var(--ink);box-shadow:var(--drop)}
+.vhead{display:flex;flex-direction:column;padding:12px 16px;border-bottom:var(--line) solid var(--ink)}
+.vcol.mean .vhead{background:var(--zap);color:#fff}
+.vcol.hib .vhead{background:var(--pow);color:#fff}
+.vt{font-family:var(--display);font-size:2rem;letter-spacing:.05em;line-height:1}
+.vs2{font-family:var(--letter);font-weight:700;font-size:.9rem}
+.vcol dl{margin:0;padding:6px 16px 16px}
+.vcol dt{font-family:var(--letter);font-weight:700;font-size:.92rem;margin-top:12px;color:var(--soft)}
+.vcol dd{margin:2px 0 0}
+.abr{color:var(--gold);font-family:var(--display);font-size:1.25em;letter-spacing:.04em;font-weight:400}
+.cover .sub b:not(.abr){color:var(--gold)}
+
+/* Pledge & fields */
+.pledge{display:flex;flex-direction:column;gap:10px}
+.pledge label{display:flex;gap:12px;align-items:flex-start;padding:10px 14px;border:2px solid var(--ink);background:#fff;cursor:pointer;box-shadow:3px 3px 0 var(--ink);font-family:var(--letter);font-weight:700}
+.pledge label:has(input:checked){background:var(--gold-pale)}
+.pledge input[type=checkbox]{width:22px;height:22px;margin-top:1px;accent-color:var(--ink);flex:none}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-family:var(--letter);font-weight:700}
+.field input{font:inherit;color:var(--ink);background:#fff;border:var(--line) solid var(--ink);padding:10px 12px;width:100%}
+.field input:focus{background:var(--gold-pale);outline:none}
+
+/* Pop quiz */
+.check{background:var(--panel);border:var(--line) solid var(--ink);box-shadow:8px 8px 0 var(--ink);margin-top:14px}
+.check-h{background:var(--ink);color:#fff;padding:10px 18px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center}
+.check-h h3{font-family:var(--display);font-size:2rem;letter-spacing:.05em;color:var(--gold);line-height:1}
+.status{font-family:var(--letter);font-weight:700;font-size:.9rem}
+.check-b{padding:18px;display:flex;flex-direction:column;gap:20px}
+.q{display:flex;flex-direction:column;gap:10px}
+.q-t{font-family:var(--letter);font-weight:700;font-size:1.1rem;line-height:1.35}
+
+/* Nav buttons */
+.nav{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center;margin-top:6px}
+.btn{font-family:var(--display);font-size:1.35rem;letter-spacing:.06em;border:var(--line) solid var(--ink);padding:8px 22px 6px;background:var(--gold);color:var(--ink);box-shadow:4px 4px 0 var(--ink);transition:transform .1s, box-shadow .1s}
+.btn:hover:not(:disabled){transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.btn:active:not(:disabled){transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
+.btn:disabled{background:#e9e5da;color:#8a8577;cursor:not-allowed;box-shadow:2px 2px 0 #8a8577;border-color:#8a8577}
+.btn.ghost{background:#fff}
+.gate{font-family:var(--letter);font-weight:700;font-size:.9rem;color:var(--soft)}
+
+/* Final score & certificate */
+.burst{align-self:flex-start;display:grid;place-items:center;width:210px;height:210px;background:var(--gold);color:var(--ink);font-family:var(--display);font-size:3.2rem;letter-spacing:.03em;clip-path:polygon(50% 0,59% 18%,79% 9%,77% 30%,98% 32%,85% 49%,100% 64%,79% 70%,84% 91%,63% 84%,50% 100%,39% 83%,17% 92%,21% 70%,0 64%,15% 49%,3% 32%,23% 30%,21% 9%,41% 18%)}
+.burst-wrap{align-self:flex-start;filter:drop-shadow(4px 4px 0 var(--ink))}
+.burst.miss{background:var(--zap);color:#fff}
+.cert-wrap{background:var(--panel);border:var(--line) solid var(--ink);box-shadow:var(--drop);padding:12px;overflow-x:auto}
+.cert-wrap canvas{width:100%;height:auto;display:block}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+
+/* Print: only the certificate */
+@media print{ @page{size:letter landscape;margin:0.4in}
+  body{background:#fff}
+  body *{visibility:hidden}
+  .cert-wrap, .cert-wrap *{visibility:visible}
+  .cert-wrap{position:absolute;left:0;top:0;width:100%;border:0;box-shadow:none;padding:0;background:#fff}
+}
+
+/* Footer */
+footer.foot{max-width:1080px;margin:0 auto;padding-block:0 40px;padding-inline:16px}
+.adult{max-width:860px;margin:0 auto;background:var(--panel);border:2px solid var(--ink);padding:12px 16px;font-size:.88rem}
+.adult summary{cursor:pointer;font-family:var(--letter);font-weight:700}
+.adult .a-body{display:flex;flex-direction:column;gap:10px;padding-top:10px}
+</style>
+</head>
+<body>
+
+
+<header class="cover">
+  <div class="cover-in">
+    <div>
+      <span class="issue" id="schoolLine">JP Case Middle School · Self-Study</span>
+      <h1>Tigers Know the ABR</h1>
+      <p class="sub"><b class="abr">ABR</b> = New Jersey's <b>A</b>nti-<b>B</b>ullying Bill of <b>R</b>ights Act. A story in 10 parts about what the law says and what you can do.</p>
+    </div>
+    <div class="tools">
+      <button class="tbtn" id="readBtn" type="button" aria-pressed="false" hidden>Read aloud</button>
+      <button class="tbtn" id="sizeBtn" type="button" aria-pressed="false">Larger text</button>
+    </div>
+  </div>
+</header>
+<nav class="strip" aria-label="Lessons">
+  <div class="strip-in">
+    <ol id="rail"></ol>
+    <div class="meter" aria-live="polite">
+      <span id="meterText">0 of 11 complete</span>
+      <div class="meter-track" role="progressbar" aria-label="Lessons completed" aria-valuemin="0" aria-valuemax="11" aria-valuenow="0" id="meterBar"><div class="meter-fill" id="meterFill"></div></div>
+    </div>
+  </div>
+</nav>
+
+<div class="shell">
+  <main id="main" tabindex="-1"></main>
+</div>
+
+<footer class="foot">
+  <details class="adult">
+    <summary>For families and staff: sources and contacts</summary>
+    <div class="a-body">
+      <p>This module explains the New Jersey Anti-Bullying Bill of Rights Act (P.L.2010, c.122, as amended through P.L.2021, c.338) for students in grades 6–8. The definition of harassment, intimidation, or bullying is taken from N.J.S.A. 18A:37-14. Reporting and investigation timelines come from N.J.S.A. 18A:37-15 and N.J.A.C. 6A:16-7.7, and the NJDOE Model Policy and Guidance (August 2022). As of October 2026, the statutory definition has not changed since 2010; the most recent amendments (2022) changed reporting procedures, including the state HIB 338 form.</p>
+      <p>Families can report using the state HIB 338 Form for Families/Caregivers (available in 12 languages) or the district's online reporting option, which allows anonymous reports. Your school's anti-bullying specialist and the district anti-bullying coordinator are listed in the district HIB policy (Policy 5512) and on the district website.</p>
+      <p>NJDOE School Climate State Coordinator: <span>hib@doe.nj.gov</span> · <span>(609) 376-9109</span></p>
+      <p>Sources: <a href="https://law.justia.com/codes/new-jersey/title-18a/section-18a-37-14/" target="_blank" rel="noopener">N.J.S.A. 18A:37-14</a> · <a href="https://law.justia.com/codes/new-jersey/title-18a/section-18a-37-15/" target="_blank" rel="noopener">N.J.S.A. 18A:37-15</a> · <a href="https://www.nj.gov/education/safety/sandp/hib/" target="_blank" rel="noopener">NJDOE HIB resources</a></p>
+      <p>This module is an educational overview, not legal advice. District policy governs local procedures.</p>
+    </div>
+  </details>
+</footer>
+<script>
+
+const SCHOOL = { name: "JP Case Middle School", district: "Flemington-Raritan School District", mascot: "Tigers" };
+const PASS = 10, QUIZ_LEN = 12;
+
+const UNITS = [
+/* ---------------- 1 ---------------- */
+{ id:"welcome", title:"Your right to a safe school", short:"Welcome", mins:3, blocks:[
+  {t:"lead", h:`New Jersey has one of the strongest anti-bullying laws in the country. It is called the <b>Anti-Bullying Bill of Rights Act</b>, or <b>ABR</b> for short. It became law in 2011 and was updated most recently in 2022.`},
+  {t:"callout", tone:"key", title:"ABR = Anti-Bullying Bill of Rights", h:`<b>A</b>nti-<b>B</b>ullying Bill of <b>R</b>ights Act. It's the New Jersey law that says what HIB is and what schools must do about it. A "bill of rights" lists the rights people have. This one protects every student's right to a safe school.`},
+  {t:"p", h:`The law uses the letters <b>HIB</b>, which stand for <b>harassment, intimidation, or bullying</b>. You'll see HIB all through this module.`},
+  {t:"p", h:`The ABR is not here to scare anyone. Its job is to make sure every student can learn without being harassed, threatened, or made to feel like they don't belong. Adults at school have duties under this law. Students have a part too: noticing, caring, and speaking up.`},
+  {t:"h3", h:"By the end, you'll be able to answer"},
+  {t:"list", items:[
+    "What does HIB mean?","What does the New Jersey law say about bullying?","Is every mean or hurtful behavior HIB?","Why does context matter?",
+    "What should I do if something happens to me?","What should I do if I see it happen to someone else?","What if I'm the one causing the problem?",
+    "What happens after someone reports something?","Why shouldn't I decide on my own whether something \"legally counts\" before telling an adult?"]},
+  {t:"callout", tone:"info", title:"How this works", h:`There are 10 short parts. Each one ends with a pop quiz. Answer it correctly to unlock the next part. (You can try again as many times as you need.) Then take the Final Check: 12 questions. Get ${PASS} or more right to earn your certificate. Plan on about 35 minutes.`},
+  {t:"name"}
+], check:[
+  {q:"What does HIB stand for?", o:["Hurtful, Insulting Behavior","Harassment, Intimidation, or Bullying","Harmful Incident at a Building","Help In Bullying"], a:1, why:"HIB is the law's term: harassment, intimidation, or bullying."},
+  {q:"What is the main purpose of New Jersey's Anti-Bullying Bill of Rights Act?", o:["To get as many students in trouble as possible","To make sure every student can learn in a safe school","To stop students from ever disagreeing","To replace a school's rules"], a:1, why:"The ABR protects every student's right to learn in a safe, respectful school."}
+]},
+
+/* ---------------- 2 ---------------- */
+{ id:"definition", title:"What HIB means under New Jersey law", short:"The definition", mins:6, blocks:[
+  {t:"lead", h:`The law gives HIB a specific definition. It has four parts. Open each part to see what the law says and what it means in everyday words.`},
+  {t:"def", parts:[
+    {label:"1 · The action", plain:`HIB can be <b>anything a person does or communicates</b>: a gesture, something written, something said, something physical, or something sent electronically. It can be <b>one incident</b> or <b>a series of incidents</b>.`,
+     legal:`"any gesture, any written, verbal or physical act, or any electronic communication, whether it be a single incident or a series of incidents"`,
+     ex:["Mocking someone with a gesture","A note, drawing, or graffiti","Names, slurs, or threats","Pushing or taking someone's things","Texts, DMs, posts, group chats","Game chat or edited photos"]},
+    {label:"2 · The characteristic", plain:`The behavior is <b>reasonably perceived as being motivated</b> by a characteristic of the student. The law lists examples, and it also covers <b>"any other distinguishing characteristic."</b> The characteristic can be <b>actual or perceived</b>. That means it counts even if the person is wrong about the student (for example, insulting someone about a religion they don't actually follow).`,
+     legal:`"that is reasonably perceived as being motivated either by any actual or perceived characteristic, such as race, color, religion, ancestry, national origin, gender, sexual orientation, gender identity and expression, or a mental, physical or sensory disability, or by any other distinguishing characteristic"`,
+     ex:["Race or color","Religion","Ancestry or national origin","Gender","Sexual orientation","Gender identity and expression","Mental, physical, or sensory disability","Other traits, like height or being quiet"]},
+    {label:"3 · Where", plain:`It happens <b>on school property</b>, <b>at a school-sponsored event</b>, <b>on a school bus</b>, or <b>off school grounds</b> in the ways the law allows. Online posts and messages sent from home can count when they affect what happens at school.`,
+     legal:`"that takes place on school property, at any school-sponsored function, on a school bus, or off school grounds as provided for in section 16 of P.L.2010, c.122 (C.18A:37-15.3)"`,
+     ex:["Classroom or hallway","Field trip or dance","Bus or bus stop","Online, after school"]},
+    {label:"4 · The impact", plain:`The behavior <b>substantially disrupts or interferes</b> with the orderly operation of the school or the rights of other students. <b>And</b> it does at least one of these things:<br>
+      <b>a.</b> A <b>reasonable person</b> should know it will <b>physically or emotionally harm</b> a student or damage their property, or make a student <b>reasonably afraid</b> of that harm;<br>
+      <b>b.</b> It has the effect of <b>insulting or demeaning</b> a student or group of students; or<br>
+      <b>c.</b> It creates a <b>hostile educational environment</b> by <b>interfering with a student's education</b>, or by severely or pervasively causing physical or emotional harm.`,
+     legal:`"that substantially disrupts or interferes with the orderly operation of the school or the rights of other students and that: a. a reasonable person should know, under the circumstances, will have the effect of physically or emotionally harming a student or damaging the student's property, or placing a student in reasonable fear of physical or emotional harm to his person or damage to his property; b. has the effect of insulting or demeaning any student or group of students; or c. creates a hostile educational environment for the student by interfering with a student's education or by severely or pervasively causing physical or emotional harm to the student."`,
+     ex:["Afraid to come to school","Can't focus in class","Avoids the cafeteria or bus","Feels humiliated in front of others"]}
+  ]},
+  {t:"callout", tone:"key", title:"Two words to know", h:`<b>Hostile educational environment</b> means school starts to feel unsafe or unwelcoming in a way that gets in the way of a student's learning.<br><b>Reasonable person</b> means a fair-minded person who understands the situation. The law asks how a reasonable person would see the behavior and its effects. It does not only ask what the person doing it says they meant.`},
+  {t:"callout", tone:"info", title:"All four parts, together", h:`For behavior to be HIB under the law, <b>all four parts</b> have to be there at the same time. If a part is missing, it is not HIB. It can still be against school rules, though. Lesson 4 shows the difference.`},
+  {t:"statute"}
+], check:[
+  {q:"Which of these could be the \"action\" part of HIB?", o:["A text message or post","A hand gesture","Something said out loud","All of these"], a:3, why:"The law covers any gesture, any written, verbal, or physical act, or any electronic communication."},
+  {q:"A student is mocked for being from a country they aren't actually from. Can that still be connected to HIB?", o:["No, because the characteristic isn't true","Yes, because the law covers actual or perceived characteristics","Only if it happens five times","Only if a teacher saw it"], a:1, why:"The law says \"actual or perceived.\" A characteristic doesn't have to be true for the behavior to be connected to it."}
+]},
+
+/* ---------------- 3 ---------------- */
+{ id:"myths", title:"Myths and facts", short:"Myths & facts", mins:4, blocks:[
+  {t:"lead", h:`Many websites, posters, and videos describe bullying in ways that aren't the same as New Jersey's legal definition. Tap each card to check the fact.`},
+  {t:"flips", cards:[
+    {m:"It only counts if it happens again and again.", f:`New Jersey's law says HIB can be <b>"a single incident or a series of incidents."</b> One incident can meet the definition, depending on what happened and its impact.`},
+    {m:"It's only bullying if the other person is bigger, older, or more popular.", f:`New Jersey's legal definition <b>does not require a power imbalance</b>. HIB can happen between classmates, friends, or anyone else.`},
+    {m:"If they didn't mean to hurt anyone, it doesn't count.", f:`The law <b>does not require intent to harm</b>. It looks at how a reasonable person would see the behavior and what a reasonable person should know about its effects. "I was just joking" doesn't erase the impact.`},
+    {m:"What happens online at home isn't the school's business.", f:`Electronic communication is part of the definition. Online behavior off school grounds <b>can count</b> when it affects school.`},
+    {m:"Telling an adult is snitching.", f:`Reporting is how people get help and stay safe. The law <b>prohibits retaliation</b> against anyone who reports.`},
+    {m:"Every mean or rude thing is HIB.", f:`<b>No.</b> HIB has specific parts. Plenty of hurtful behavior is not HIB, but it may still break school rules and still deserve help. That's the next lesson.`}
+  ]},
+  {t:"callout", tone:"info", title:"Why the difference?", h:`Common definitions of bullying often mention repeated behavior, an imbalance of power, or intent to hurt. Those ideas can help describe what bullying often looks like. But they are <b>not requirements</b> in New Jersey's legal definition of HIB. Remember the four parts from Lesson 2.`}
+], check:[
+  {q:"True or false: Under New Jersey law, something must happen more than once to be HIB.", o:["True","False"], a:1, why:"False. The law says \"a single incident or a series of incidents.\""},
+  {q:"Jordan says, \"I was only joking, so it can't be HIB.\" What's the best response?", o:["Jordan is right; jokes never count","Intent to harm isn't required; what matters is how a reasonable person would see it and the effect","It only counts if Jordan is older","It only counts if Jordan admits it"], a:1, why:"The law focuses on reasonable perception and impact, not only on what the person says they meant."},
+  {q:"Does New Jersey's legal definition of HIB require an imbalance of power?", o:["Yes, always","No"], a:1, why:"No. Power imbalance appears in many common definitions, but it is not a requirement in New Jersey's statute."}
+]},
+
+/* ---------------- 4 ---------------- */
+{ id:"context", title:"Mean behavior vs. HIB", short:"Mean vs. HIB", mins:8, blocks:[
+  {t:"lead", h:`Mean behavior and HIB are <b>both wrong</b>, and both get dealt with at school. But they are not the same thing. HIB is a specific legal term. Most mean behavior is not HIB. It still breaks school rules.`},
+  {t:"versus", left:{title:"Mean behavior", sub:"Breaks the Code of Student Conduct", rows:[
+      ["What it is","Rudeness, insults, name-calling, arguments, pushing, disrespect, mean posts."],
+      ["Does it need a reason tied to who someone is?","No. A put-down about anything can break school rules."],
+      ["Does it need a certain impact?","No. Breaking the rule is enough for adults to step in."],
+      ["What the school does","Adults correct it and give consequences under the Code of Student Conduct, like a warning, a call home, detention, loss of privileges, or suspension."]]},
+    right:{title:"HIB", sub:"Meets the legal definition in the ABR", rows:[
+      ["What it is","Behavior that meets all four parts of the legal definition from Lesson 2."],
+      ["Does it need a reason tied to who someone is?","Yes. It must reasonably seem motivated by a characteristic, like race, religion, disability, gender identity, or another distinguishing trait."],
+      ["Does it need a certain impact?","Yes. It must substantially disrupt the school or interfere with students' rights, and harm, insult, or demean a student or make school hostile for them."],
+      ["What the school does","A formal HIB investigation with legal deadlines. Results go to the superintendent and the board of education, and families get written notice. Consequences and supports follow."]]}},
+  {t:"callout", tone:"key", title:"\"Not HIB\" does not mean \"OK\"", h:`If something isn't HIB, the student is <b>not off the hook</b>. Mean behavior still gets corrected and can still lead to consequences under school rules. Conflict can also grow into HIB over time.`},
+  {t:"p", h:`Examples that usually are <b>not HIB by themselves</b>, but may still break school rules:`},
+  {t:"list", items:["A disagreement about a group project","An argument between friends","A rude comment made in a bad mood","An accident, like bumping into someone in a crowded hallway","Two friends drifting apart","A dispute over a position on a team"]},
+  {t:"h3", h:"Which part is missing?"},
+  {t:"p", h:`Practice using the four parts. For each situation, decide which part of the HIB definition seems to be missing, if any. In real life, the school makes this call after an investigation, so you only need to tell an adult.`},
+  {t:"missing", opts:["The characteristic part","The impact part","Nothing is clearly missing"], items:[
+    {s:`Dev cuts in the lunch line. When Sam complains, Dev says, "Mind your business, loser." They both go back to their tables.`, a:0,
+     fb:`The insult isn't about who Sam is. It's about the line. That's rude, and Dev can get consequences under the Code of Student Conduct. But the characteristic part of HIB seems to be missing.`},
+    {s:`Two friends argue over a foul in gym. One shoves the other, and they yell at each other until the teacher steps in.`, a:0,
+     fb:`This is a personal dispute about the game, not about a characteristic. Shoving is serious, and the school will give consequences for it. It just doesn't seem to fit HIB.`},
+    {s:`Since Priya started wearing a hearing aid, a group in her class cups their ears and shouts "WHAT?" every time she talks. She has stopped raising her hand.`, a:2,
+     fb:`It's connected to a disability, it happens at school, and it's interfering with her learning. All four parts seem to be there. Tell an adult so the school can investigate.`},
+    {s:`In a private chat, Leo teases Max about his new haircut. Max laughs, teases Leo about his sneakers, and they keep chatting like normal.`, a:1,
+     fb:`Nothing here shows harm, fear, or a disruption at school. Both students are joking back and forth. The impact part seems to be missing. If Max were actually upset, or it kept going after he asked them to stop, that could change. When you're unsure, ask an adult.`}
+  ]},
+  {t:"h3", h:"Same words, different situation"},
+  {t:"p", h:`Context means the details around what happened. The same words or actions can mean very different things in different situations. For each pair, pick the situation that has <b>more signs an adult would look into closely as possible HIB</b>.`},
+  {t:"pairs", items:[
+    {a:`Maya and Lena have called each other "Shorty" as a joke since 3rd grade. They both laugh about it, and either one would say so if it bothered them.`,
+     b:`A group chants "Shorty" whenever Ava walks into class. She has asked them to stop. She now eats lunch in the nurse's office to avoid them.`, ans:"b",
+     clues:["It's tied to a distinguishing characteristic (height)","Ava asked them to stop","It happens in front of others","It's affecting her school day: she avoids the cafeteria"]},
+    {a:`As a student who wears a hijab walks by, a classmate says, "Go back to your country," and others laugh.`,
+     b:`Two students argue loudly in gym over who gets the last basketball. Both are angry and both say mean things.`, ans:"a",
+     clues:["It's connected to religion and perceived national origin","It is insulting and demeaning","One incident can be enough, depending on the impact","Others laughing can make it feel more threatening"]},
+    {a:`Rushing to the bus, Marcus knocks Eli's lunch tray. He says sorry and helps clean up.`,
+     b:`Students keep "accidentally" bumping into a student who uses crutches, then laughing and recording it on their phones.`, ans:"b",
+     clues:["It's connected to a physical disability","It's physical and could cause harm","Recording and sharing can spread the harm online","The student may become afraid at school"]}
+  ]},
+  {t:"h3", h:"Context clues adults look at"},
+  {t:"list", items:["Who was involved and how they know each other","Exactly what was said or done, and how","Whether it seemed connected to a characteristic","Whether it happened once or is part of something bigger","Where it happened and who saw or shared it","How it affected the student: fear, missing class, trouble focusing","How it affected the school"]},
+  {t:"callout", tone:"info", title:"The takeaway", h:`You can't always tell from the outside. That is exactly why the next lesson matters.`}
+], check:[
+  {q:"Why does context matter when deciding if something might be HIB?", o:["It doesn't; only the exact words matter","The same words or actions can have different meaning and impact depending on the situation","Context only matters for adults","Context only matters online"], a:1, why:"Who was involved, what happened, why it seemed to happen, and its impact all shape whether behavior may meet the definition."},
+  {q:"What is the main difference between mean behavior and HIB?", o:["HIB is mean behavior that happens three times","HIB meets every part of the legal definition, including being tied to a characteristic and having a serious impact. Other mean behavior breaks school rules but isn't HIB","Mean behavior is allowed; HIB is not","There is no difference"], a:1, why:"HIB is a specific legal definition. Mean behavior that doesn't meet it still breaks school rules and still has consequences."},
+  {q:"Two friends argue about a group project and both say rude things. Which statement is most accurate?", o:["It is automatically HIB","It may not be HIB, but it can still break school rules and you can still ask an adult for help","Adults can't do anything about it","It's illegal to argue at school"], a:1, why:"Conflict isn't automatically HIB, but it can still violate the Code of Student Conduct, and adults can still help."}
+]},
+
+/* ---------------- 5 ---------------- */
+{ id:"decide", title:"You report. The school decides.", short:"Who decides", mins:4, blocks:[
+  {t:"lead", h:`Deciding whether something legally counts as HIB is <b>not your job</b>. It is the school's job. Trained adults, including the principal and the school's <b>anti-bullying specialist</b>, decide through an investigation.`},
+  {t:"h3", h:"Why you shouldn't decide on your own first"},
+  {t:"steps", items:[
+    {b:"You only see part of the picture.", d:"There may be other incidents, online messages, or effects on the student that you don't know about."},
+    {b:"The legal definition has several parts.", d:"Adults are trained to look at each part carefully. That's hard to do in the moment."},
+    {b:"Waiting to be sure lets harm grow.", d:"The sooner an adult knows, the sooner the student can get support and the behavior can stop."},
+    {b:"Adults can help even if it isn't HIB.", d:"Conflict, rudeness, and school-rule problems can all be addressed."},
+    {b:"Adults at school are required to act.", d:"School staff must report to the principal the same day they learn about possible HIB. Telling them starts that process."}
+  ]},
+  {t:"callout", tone:"key", title:"The rule of thumb", h:`If something makes you or someone else feel unsafe, hurt, or afraid at school, <b>tell an adult</b>. You don't need proof, and you don't need to know whether it's HIB.`},
+  {t:"callout", tone:"info", title:"\"What if I'm wrong?\"", h:`A report made honestly is never a mistake, even if the school finds it isn't HIB. The one thing the law prohibits is <b>knowingly making a false accusation</b> to hurt someone. Making a false accusation on purpose can itself be a form of harassment.`},
+  {t:"choose", scene:`Your friend says, "Don't tell anyone. It only happened once, so it's not really bullying."`, opts:[
+    {t:"Agree and stay quiet. It only happened once.", k:"no", fb:"One incident can still be HIB. And either way, it isn't your job to decide. An adult can help sort it out."},
+    {t:"Say, \"I'm not sure if it's bullying, but an adult can figure that out. I'll go with you to tell someone.\"", k:"best", fb:"Exactly. You don't have to decide whether it's HIB. Getting an adult involved is the right move."},
+    {t:"Look up the law online and decide for yourselves.", k:"meh", fb:"Learning about the law is great, but deciding whether something counts is the school's job. Tell an adult first."}
+  ]}
+], check:[
+  {q:"Who decides whether something is HIB?", o:["The students involved","Whoever saw it","The school, through an investigation led by trained staff","Social media comments"], a:2, why:"The principal and the anti-bullying specialist investigate and decide, with the superintendent and board of education reviewing results."},
+  {q:"You aren't sure whether something you saw \"counts\" as HIB. What should you do?", o:["Wait until you're sure","Tell a trusted adult and let the school decide","Ignore it","Post about it to see what others think"], a:1, why:"You don't need to know if it's HIB to report it. That's the school's job."}
+]},
+
+/* ---------------- 6 ---------------- */
+{ id:"me", title:"If it happens to you", short:"If it's happening to me", mins:5, blocks:[
+  {t:"callout", tone:"care", title:"First, know this", h:`Being targeted is <b>never your fault</b>. You deserve to feel safe at school. The law prohibits anyone from retaliating against you for reporting.`},
+  {t:"steps", items:[
+    {b:"Get to safety.", d:"If you're in danger, go to the nearest adult right away. In an emergency, call 911."},
+    {b:"Don't fight back or post back.", d:"Retaliating can make things worse and can get you in trouble too."},
+    {b:"Tell a trusted adult at school.", d:"Any staff member works: a teacher, counselor, nurse, coach, bus driver, or principal. They must report it to the principal the same day."},
+    {b:"Tell a parent or guardian.", d:"Families can also report using the state HIB 338 form or the district's online reporting option, which can be anonymous."},
+    {b:"Keep a record.", d:"Write down what happened, when, where, and who saw it. Screenshot hurtful messages or posts so adults can see them, but don't forward them to anyone else."},
+    {b:"Take care of yourself.", d:"Talk with your school counselor. Spend time with people who make you feel good."}
+  ]},
+  {t:"callout", tone:"warn", title:"One important exception", h:`If someone shares a nude or sexual image of a student, <b>do not screenshot, save, or forward it</b>, even as evidence. Tell an adult right away and let them handle it.`},
+  {t:"h3", h:"Not sure what to say? Try this"},
+  {t:"say", h:`"Something happened that I need help with. On [day], [what happened]. It's making me feel [how you feel]. Can you help me?"`},
+  {t:"p", h:`You can also write it down and hand it to an adult if talking feels hard.`},
+  {t:"callout", tone:"care", title:"If you are really struggling", h:`If you ever feel hopeless or think about hurting yourself, tell a trusted adult right away, or call or text <b>988</b> any time.`}
+], check:[
+  {q:"Someone keeps sending you hurtful messages. What's a good first step?", o:["Send something worse back","Screenshot the messages and show a trusted adult","Delete everything and tell no one","Post the messages publicly to shame them"], a:1, why:"Save evidence (except sexual images) and tell a trusted adult. Don't retaliate."},
+  {q:"Which adults at school can you tell?", o:["Only the principal","Only your homeroom teacher","Any staff member you trust","None; you have to fill out a legal form yourself"], a:2, why:"Any staff member can help, and they're required to take it to the principal the same day."}
+]},
+
+/* ---------------- 7 ---------------- */
+{ id:"see", title:"If you see it happen", short:"If I see it", mins:5, blocks:[
+  {t:"lead", h:`A <b>bystander</b> sees something happen. An <b>upstander</b> does something to help. How bystanders react can feed hurtful behavior or help stop it.`},
+  {t:"h3", h:"Ways to be an upstander"},
+  {t:"list", items:[
+    "<b>Don't join in.</b> Don't laugh, like, share, forward, or comment.",
+    "<b>Speak up, if it feels safe.</b> A calm \"Not cool\" or \"Leave them alone\" can be enough.",
+    "<b>Distract.</b> Interrupt the moment: \"Hey, Ms. Lopez is looking for you.\"",
+    "<b>Get an adult.</b> This is always a good choice, and you can do it quietly.",
+    "<b>Check in afterward.</b> \"That wasn't OK. Are you all right? Want me to come with you to tell someone?\"",
+    "<b>Document online harassment.</b> Take screenshots for an adult (but never of sexual images)."
+  ]},
+  {t:"callout", tone:"key", title:"Your safety comes first", h:`You never have to put yourself in danger. Telling an adult is always a strong, safe choice. You can also report anonymously.`},
+  {t:"choose", scene:`In a class group chat, someone posts a meme making fun of a classmate's speech disability. People start reacting with laughing emojis.`, opts:[
+    {t:"Add a laughing emoji so you don't stand out.", k:"no", fb:"Reacting can spread the harm and make it feel bigger to the person targeted."},
+    {t:"Don't react, take a screenshot, and show a trusted adult.", k:"best", fb:"Great choice. You didn't add to it, and you got it to someone who can help."},
+    {t:"Leave the chat and forget about it.", k:"meh", fb:"Not joining in is good, but the student may still need help. Telling an adult is the stronger move."}
+  ]},
+  {t:"choose", scene:`At lunch, a few students imitate a new student's accent every time he talks. He has started eating alone.`, opts:[
+    {t:"Invite him to sit with you and let a lunch aide or counselor know what's been happening.", k:"best", fb:"That supports him right away and gets an adult involved."},
+    {t:"Tell the students they're terrible people in front of everyone.", k:"meh", fb:"Speaking up can help, but calling people names can turn into a bigger conflict. Keep it calm and get an adult."},
+    {t:"Nothing. It's not your business.", k:"no", fb:"Everyone has a part in making school safe. A small action can help a lot."}
+  ]}
+], check:[
+  {q:"Which action is always a safe way to help when you see someone being targeted?", o:["Fighting the person doing it","Telling a trusted adult","Recording and posting it online","Laughing so it ends faster"], a:1, why:"Telling an adult is always safe and effective, and you can do it privately or anonymously."},
+  {q:"Liking or sharing a hurtful post about a classmate:", o:["Is harmless if you didn't write it","Can add to the harm","Only matters if you comment","Is required to report it"], a:1, why:"Reacting, sharing, and forwarding all spread the harm."}
+]},
+
+/* ---------------- 8 ---------------- */
+{ id:"mine", title:"If it's your behavior", short:"If it's my behavior", mins:5, blocks:[
+  {t:"lead", h:`It takes courage to ask yourself whether your own words or actions are hurting someone. Everyone makes mistakes. What matters is what you do next.`},
+  {t:"h3", h:"Signs to pay attention to"},
+  {t:"list", items:["Someone has asked you to stop","The other person doesn't laugh, goes quiet, or starts avoiding you","Your jokes focus on someone's race, religion, body, disability, gender, or other characteristic","You'd act differently if an adult were watching","You're posting things you wouldn't say face to face"]},
+  {t:"callout", tone:"key", title:"Impact matters", h:`"I was just joking" doesn't change how something landed. Under the law, what a reasonable person would perceive matters, not only what you meant.`},
+  {t:"h3", h:"How to make it right"},
+  {t:"steps", items:[
+    {b:"Stop.", d:"End the behavior right away, online and in person."},
+    {b:"Listen.", d:"Hear how it affected the other person without arguing or explaining it away."},
+    {b:"Apologize for real.", d:"Say \"I'm sorry I said that. It wasn't OK.\" Avoid \"Sorry if you were offended.\""},
+    {b:"Repair.", d:"Delete hurtful posts. Ask friends to stop. Treat the person with respect going forward."},
+    {b:"Get support.", d:"A counselor or trusted adult can help you understand what happened and how to change."},
+    {b:"Never retaliate.", d:"Getting back at someone who reported you is prohibited and leads to more consequences."}
+  ]},
+  {t:"callout", tone:"info", title:"If the school finds HIB", h:`Schools use <b>consequences and remedial measures</b>. That can include counseling, restorative conversations, loss of privileges, detention, or suspension, depending on what happened. If behavior continues, the school creates an individual plan that can include counseling and increasing consequences. The goal is for the behavior to stop and for everyone, including the student who caused harm, to learn and do better.`},
+  {t:"choose", scene:`Your friend tells you privately that the nickname you've been calling him in front of the team really bothers him.`, opts:[
+    {t:"\"Relax, it's just a joke.\"", k:"no", fb:"That dismisses how he feels. Impact matters more than what you meant."},
+    {t:"\"Thanks for telling me. I'm sorry. I'll stop.\" Then actually stop.", k:"best", fb:"That's what respect and responsibility look like."},
+    {t:"Stop using it, but tell the team he's too sensitive.", k:"meh", fb:"Stopping is good, but talking about him behind his back creates new harm."}
+  ]}
+], check:[
+  {q:"You realize a \"joke\" you keep making is hurting a classmate. What's the best next step?", o:["Keep going; they'll get over it","Stop, apologize sincerely, and change your behavior","Explain why it was funny","Wait to see if anyone reports it"], a:1, why:"Stop, listen, apologize, and repair. Getting help from a counselor is a strong move too."},
+  {q:"Is it OK to get back at someone for reporting you?", o:["Yes, if the report was unfair","No. Retaliation against someone who reports is prohibited","Only online","Only if no adult finds out"], a:1, why:"The ABR prohibits reprisal and retaliation against anyone who reports HIB."}
+]},
+
+/* ---------------- 9 ---------------- */
+{ id:"after", title:"What happens after a report", short:"After a report", mins:5, blocks:[
+  {t:"lead", h:`When you tell an adult, the law sets up a process with deadlines. Here's what happens after a report of possible HIB.`},
+  {t:"timeline", items:[
+    {w:"Same day", x:"A staff member tells the principal.", d:"Any school employee who learns about possible HIB must tell the principal verbally that day."},
+    {w:"Within 2 school days", x:"A written report is filed.", d:"Staff complete the state HIB 338 form. Families can file one too."},
+    {w:"Within 1 school day of the report", x:"The principal starts the process.", d:"The principal begins an investigation, or first decides whether the report should be handled as HIB or under the Code of Student Conduct. If it's handled under the Code of Conduct, the superintendent reviews that decision and can order an HIB investigation. Families of the students involved are contacted."},
+    {w:"Within 10 school days of the written report", x:"The investigation is finished.", d:"The anti-bullying specialist talks with the students involved and witnesses, and looks at evidence like messages or posts."},
+    {w:"Within 2 school days after", x:"The superintendent gets the results.", d:"The superintendent can decide on supports, counseling, programs, or discipline."},
+    {w:"Next board meeting", x:"The board of education is informed.", d:"The board reviews the results and can affirm, reject, or change the decision."},
+    {w:"Within 5 school days after the board", x:"Families get written information.", d:"Parents or guardians of the students involved learn whether HIB was found and whether discipline was imposed or services provided. They can request a hearing before the board."}
+  ]},
+  {t:"callout", tone:"key", title:"While this happens", h:`Students can get support right away, like counseling, a changed seat or schedule, or a safety plan. Adults watch for retaliation.`},
+  {t:"callout", tone:"info", title:"Why you might not hear every detail", h:`Student records are private. You may not learn what consequences another student received. That doesn't mean nothing happened.`},
+  {t:"callout", tone:"info", title:"About anonymous reports", h:`You can report anonymously. Schools take anonymous reports seriously and look into them. The law says a school can't take formal discipline based <i>only</i> on an anonymous report, so sharing your name, when you feel safe doing so, can help.`},
+  {t:"callout", tone:"info", title:"If it isn't HIB", h:`The school still addresses it. Mean behavior can still lead to consequences under the Code of Student Conduct, and adults may add a counselor or a conflict-resolution conversation.`}
+], check:[
+  {q:"After a written report, how long does the school have to finish an HIB investigation?", o:["1 school day","No more than 10 school days","30 days","There is no deadline"], a:1, why:"The investigation must be completed no later than 10 school days from the written report."},
+  {q:"Who usually investigates a report of HIB at school?", o:["The student who reported it","The anti-bullying specialist, under the principal","The police, every time","Other students"], a:1, why:"The principal starts the process and the school's anti-bullying specialist leads the investigation."}
+]},
+
+/* ---------------- 10 ---------------- */
+{ id:"community", title:"Building a respectful school", short:"Our community", mins:3, blocks:[
+  {t:"lead", h:`The ABR isn't only about responding to problems. It also asks schools to build a positive climate. Every October, New Jersey schools hold a <b>Week of Respect</b>, and each school has a <b>School Safety/Climate Team</b> that works on making school feel safe for everyone.`},
+  {t:"p", h:`A respectful school isn't one where nobody ever disagrees. It's one where people disagree without demeaning each other, notice when someone is left out, and speak up.`},
+  {t:"h3", h:"Choose your commitments"},
+  {t:"p", h:`Pick at least two. You can also write your own. Your commitments will appear on your certificate.`},
+  {t:"pledge", items:["I will include people who are left out.","I will think before I post, like, or share.","I will tell an adult when someone is being harmed, even if I'm not sure it's HIB.","I will apologize and make it right when I hurt someone.","I will be curious about differences instead of making fun of them.","I will check in on someone who's been targeted."]}
+], check:[
+  {q:"Which describes a respectful school community?", o:["Nobody ever disagrees","People can disagree without demeaning each other, and they speak up when someone is harmed","Adults handle everything and students stay out of it","Only serious problems get reported"], a:1, why:"Respect means handling disagreement without demeaning people, and everyone helping to keep school safe."}
+]}
+];
+
+const POOL = [
+  {q:"What does ABR stand for?", o:["After-school Behavior Rules","Anti-Bullying Bill of Rights","Always Be Respectful","Anti-Bullying Board Review"], a:1, why:"ABR is the Anti-Bullying Bill of Rights Act, New Jersey's anti-bullying law."},
+  {q:"A student insults a classmate during an argument about a game. The school decides it is not HIB. What happens?", o:["Nothing; the student is off the hook","The school can still correct the behavior and give consequences under the Code of Student Conduct","The other student gets in trouble instead","The report gets erased"], a:1, why:"\"Not HIB\" doesn't mean OK. Mean behavior still breaks school rules and can have consequences."},
+  {q:"Which of these can be HIB under New Jersey law?", o:["Only physical fights","Only things said face to face","Gestures, written, verbal, or physical acts, and electronic communication","Only things that happen inside the school building"], a:2, why:"The definition covers any gesture, written, verbal, or physical act, or electronic communication."},
+  {q:"True or false: Under New Jersey law, behavior has to be repeated to be HIB.", o:["True","False"], a:1, why:"False. HIB can be a single incident or a series of incidents."},
+  {q:"True or false: New Jersey's legal definition of HIB requires a power imbalance between students.", o:["True","False"], a:1, why:"False. A power imbalance is not a requirement of New Jersey's statutory definition."},
+  {q:"A student says, \"I didn't mean to hurt anyone.\" Under the ABR, which is true?", o:["If there was no intent, it can't be HIB","Intent to harm is not required; the law looks at reasonable perception and impact","Only the target's opinion matters","The student automatically gets suspended"], a:1, why:"The definition uses a reasonable-person standard and focuses on perception and effect, not intent to harm."},
+  {q:"What does \"actual or perceived characteristic\" mean?", o:["The characteristic must be proven true","The behavior can be connected to a characteristic even if the person is wrong about it","Only race counts","Only visible characteristics count"], a:1, why:"\"Perceived\" means it counts even when the characteristic isn't actually true of the student."},
+  {q:"Is every argument, rude comment, or disagreement HIB?", o:["Yes, always","No. Not every hurtful behavior meets the definition, but it can still break school rules","No, and the school can't do anything about it","Only if it's posted online"], a:1, why:"Not every conflict is HIB, but it may still violate the Code of Student Conduct, and adults can still help."},
+  {q:"Why should you tell an adult instead of deciding for yourself whether something is HIB?", o:["Because students are always wrong","You may not see the whole picture, the definition has several parts, and trained adults decide through an investigation","Because adults like paperwork","You should only report if you're 100% sure"], a:1, why:"The school decides through an investigation. Your job is to tell."},
+  {q:"A classmate posts something hurtful about another student from home on a Saturday. Can it be addressed under the ABR?", o:["No, school rules end at the school door","Yes, off-campus electronic communication can count when it affects school","Only if it's posted during school hours","Only if a teacher follows the account"], a:1, why:"The law covers certain off-grounds conduct, including electronic communication that affects school."},
+  {q:"When a school staff member learns about possible HIB, when must they tell the principal?", o:["The same day","Within a month","At the end of the marking period","Only if a parent calls"], a:0, why:"Staff must report verbally to the principal the same day, then in writing within two school days."},
+  {q:"An HIB investigation must be completed:", o:["Within 1 school day","No later than 10 school days from the written report","By the end of the year","Whenever the school has time"], a:1, why:"The law sets a deadline of 10 school days from the written report."},
+  {q:"After a report, what can happen to someone who retaliates against the person who reported?", o:["Nothing. Retaliation is allowed","Retaliation is prohibited and has consequences","Only adults can be punished for retaliation","The report gets cancelled"], a:1, why:"The ABR prohibits reprisal and retaliation against anyone who reports."},
+  {q:"You see a group chat mocking a classmate's religion. What's the best response?", o:["React so you fit in","Don't react, save a screenshot, and tell a trusted adult","Forward it to more people so adults notice","Ignore it; it's online"], a:1, why:"Don't add to it, keep evidence, and get it to an adult."},
+  {q:"Can you report possible HIB anonymously?", o:["No, never","Yes. Schools must provide a way to report anonymously","Only parents can","Only if you're the target"], a:1, why:"The law requires a way to report anonymously, though formal discipline can't be based only on an anonymous report."},
+  {q:"Someone tells you your comments have been hurting a classmate. What should you do?", o:["Argue that it was a joke","Stop, listen, apologize sincerely, and change the behavior","Find out who told and confront them","Keep going until an adult says something"], a:1, why:"Taking responsibility and repairing harm is the right move, and confronting the reporter would be retaliation."},
+  {q:"Which of these is NOT something you should do if someone shares a nude or sexual image of a student?", o:["Tell an adult right away","Refuse to forward it","Screenshot and save it as evidence","Leave the chat and get help"], a:2, why:"Never screenshot, save, or share a sexual image of a student. Tell an adult and let them handle it."},
+  {q:"\"Hostile educational environment\" means:", o:["A school with strict rules","When behavior makes school unsafe or unwelcoming in a way that interferes with a student's education","Any time two students disagree","A noisy classroom"], a:1, why:"It's when behavior interferes with a student's education or severely or pervasively causes physical or emotional harm."}
+];
+
+const KEY = "abr-selfstudy-v1";
+const QUIZ_IDX = UNITS.length; // index 10 = final check, 11 = certificate
+const S = load();
+function load(){ let s=null; try{ s=JSON.parse(localStorage.getItem(KEY)||"null"); }catch(e){}
+  return Object.assign({name:"", cur:0, done:{}, answers:{}, pledge:[], custom:"", best:null, passedAt:null, big:false}, s||{}); }
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
+
+const $ = (s,r=document)=>r.querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const main = $("#main");
+document.getElementById("schoolLine").textContent = SCHOOL.name + " · Self-Study";
+if(S.big){ document.body.classList.add("big"); $("#sizeBtn").setAttribute("aria-pressed","true"); }
+
+/* ---------- rail ---------- */
+function isUnlocked(i){ if(i===0) return true; if(i<QUIZ_IDX) return !!S.done[UNITS[i-1].id]; if(i===QUIZ_IDX) return UNITS.every(u=>S.done[u.id]); return S.best!==null && S.best>=PASS; }
+function renderRail(){
+  const items = UNITS.map((u,i)=>({label:u.short, done:!!S.done[u.id], n:String(i+1)}));
+  items.push({label:"Final check", done:S.best!==null && S.best>=PASS, n:"Q"});
+  items.push({label:"Certificate", done:!!S.passedAt, n:"★"});
+  $("#rail").innerHTML = items.map((it,i)=>`<li class="${it.done?"done":""}"><button class="rail-btn" data-go="${i}" ${isUnlocked(i)?"":"disabled"} ${S.cur===i?'aria-current="step"':""} aria-label="${esc((i<QUIZ_IDX?"Lesson "+(i+1)+": ":"")+it.label)}${it.done?" (complete)":""}"><span class="dot">${it.n}</span><span class="rl">${esc(it.label)}</span></button></li>`).join("");
+  const n = UNITS.filter(u=>S.done[u.id]).length + (S.best!==null && S.best>=PASS ? 1:0);
+  $("#meterFill").style.width = (n/11*100)+"%"; $("#meterBar").setAttribute("aria-valuenow", n); $("#meterText").textContent = `${n} of 11 complete`;
+  const cur=$("#rail [aria-current]"); if(cur){ const ol=$("#rail"); ol.scrollLeft = cur.getBoundingClientRect().left - ol.getBoundingClientRect().left + ol.scrollLeft - ol.clientWidth/2 + cur.offsetWidth/2; }
+}
+
+/* ---------- blocks ---------- */
+function blockHTML(b, ui){
+  switch(b.t){
+    case "lead": return `<p class="lead">${b.h}</p>`;
+    case "p": return `<p>${b.h}</p>`;
+    case "h3": return `<h3>${b.h}</h3>`;
+    case "list": return `<ul class="tidy">${b.items.map(x=>`<li>${x}</li>`).join("")}</ul>`;
+    case "callout": return `<div class="callout ${b.tone}"><span class="sfx" aria-hidden="true">${{key:"Key idea!",info:"Heads up!",care:"You matter!",warn:"Stop!"}[b.tone]}</span><h4>${b.title}</h4><p>${b.h}</p></div>`;
+    case "say": return `<p class="bubble">${b.h}</p>`;
+    case "name": return `<div class="field"><label for="nameIn">Your name (for your certificate)</label><input id="nameIn" autocomplete="name" maxlength="60" placeholder="First and last name" value="${esc(S.name)}"></div>`;
+    case "steps": return `<ol class="steps">${b.items.map(x=>`<li><div><b>${x.b}</b>${x.d}</div></li>`).join("")}</ol>`;
+    case "def": { const id=ui; return `<div class="def" data-def="${id}"><div class="def-tabs" role="tablist">${b.parts.map((p,i)=>`<button class="def-tab ${i===0?"seen":""}" role="tab" id="dt${id}-${i}" aria-selected="${i===0}" aria-controls="dp${id}" data-dtab="${i}">${esc(p.label)}</button>`).join("")}</div><div class="def-panel" role="tabpanel" id="dp${id}"></div></div>`; }
+    case "statute": return `<details class="statute"><summary>Read the full legal definition (N.J.S.A. 18A:37-14)</summary><div class="s-body"><p>"Harassment, intimidation or bullying" means any gesture, any written, verbal or physical act, or any electronic communication, whether it be a single incident or a series of incidents, that is reasonably perceived as being motivated either by any actual or perceived characteristic, such as race, color, religion, ancestry, national origin, gender, sexual orientation, gender identity and expression, or a mental, physical or sensory disability, or by any other distinguishing characteristic, that takes place on school property, at any school-sponsored function, on a school bus, or off school grounds as provided for in section 16 of P.L.2010, c.122 (C.18A:37-15.3), that substantially disrupts or interferes with the orderly operation of the school or the rights of other students and that:</p><p>a. a reasonable person should know, under the circumstances, will have the effect of physically or emotionally harming a student or damaging the student's property, or placing a student in reasonable fear of physical or emotional harm to his person or damage to his property;</p><p>b. has the effect of insulting or demeaning any student or group of students; or</p><p>c. creates a hostile educational environment for the student by interfering with a student's education or by severely or pervasively causing physical or emotional harm to the student.</p><p class="muted">"Electronic communication" means a communication transmitted by means of an electronic device, including, but not limited to, a telephone, cellular phone, computer, or pager.</p></div></details>`;
+    case "flips": return `<div class="flips">${b.cards.map((c,i)=>`<button class="flip" data-flip="${i}" aria-pressed="false"><span class="side-label">Myth!</span><span class="ftxt">${esc(c.m)}</span><span class="hint">Tap to see the fact</span></button>`).join("")}</div>`;
+    case "pairs": return b.items.map((p,i)=>`<div class="pair" data-pair="${i}"><p class="tag">Pair ${i+1} of ${b.items.length}</p><div class="pair-opts"><button class="pair-opt" data-pick="a"><span class="lbl">Situation A</span><span>${p.a}</span></button><span class="vs" aria-hidden="true">VS!</span><button class="pair-opt" data-pick="b"><span class="lbl">Situation B</span><span>${p.b}</span></button></div><div class="pair-fb" aria-live="polite"></div></div>`).join("");
+    case "choose": return `<div class="choose"><p class="tag">What would you do?</p><p class="bubble">${b.scene}</p>${b.opts.map((o,i)=>`<button class="opt" data-ch="${i}">${o.t}</button>`).join("")}<div class="ch-fb" aria-live="polite"></div></div>`;
+    case "timeline": return `<div class="tl">${b.items.map(x=>`<div class="tl-item"><span class="tl-when">${x.w}</span><span class="tl-what">${x.x}</span><span class="muted">${x.d}</span></div>`).join("")}</div>`;
+    case "versus": { const col=(s,cls)=>`<div class="vcol ${cls}"><div class="vhead"><span class="vt">${s.title}</span><span class="vs2">${s.sub}</span></div><dl>${s.rows.map(r=>`<dt>${r[0]}</dt><dd>${r[1]}</dd>`).join("")}</dl></div>`;
+      return `<div class="versus">${col(b.left,"mean")}<span class="vs" aria-hidden="true">VS!</span>${col(b.right,"hib")}</div>`; }
+    case "missing": return b.items.map((it,i)=>`<div class="choose miss" data-miss="${i}"><p class="tag">Case ${i+1} of ${b.items.length}</p><p class="bubble">${it.s}</p>${b.opts.map((o,oi)=>`<button class="opt" data-mo="${oi}">${o}</button>`).join("")}<div class="ch-fb" aria-live="polite"></div></div>`).join("");
+    case "pledge": return `<div class="pledge">${b.items.map((x,i)=>`<label><input type="checkbox" id="pl${i}" data-pl="${esc(x)}" ${S.pledge.includes(x)?"checked":""}><span>${esc(x)}</span></label>`).join("")}<div class="field"><label for="plCustom">My own commitment (optional)</label><input id="plCustom" maxlength="90" value="${esc(S.custom)}" placeholder="I will…"></div></div>`;
+  }
+  return "";
+}
+
+function checkHTML(u){
+  return `<section class="check" aria-labelledby="ch-${u.id}"><div class="check-h"><h3 id="ch-${u.id}">Pop quiz!</h3><span class="status" id="chStatus"></span></div><div class="check-b">${u.check.map((q,qi)=>`<div class="q" data-q="${qi}"><p class="q-t">${qi+1}. ${esc(q.q)}</p>${q.o.map((o,oi)=>`<button class="opt" data-qa="${oi}">${esc(o)}</button>`).join("")}<div class="qfb" aria-live="polite"></div></div>`).join("")}</div></section>`;
+}
+
+/* ---------- lesson view ---------- */
+const SIMPLE = new Set(["lead","p","h3","list","name"]);
+function groupBlocks(blocks){ let out="", buf=""; blocks.forEach((b,bi)=>{ if(SIMPLE.has(b.t)){ if(b.t==="lead" && buf){ out+=`<div class="panel">${buf}</div>`; buf=""; } buf+=blockHTML(b,bi); } else { if(buf){ out+=`<div class="panel">${buf}</div>`; buf=""; } out+=blockHTML(b,bi); } }); if(buf) out+=`<div class="panel">${buf}</div>`; return out; }
+function renderUnit(i){
+  const u = UNITS[i];
+  const isLast = i===UNITS.length-1;
+  main.innerHTML = `<article class="lesson" id="lessonText"><header class="splash"><span class="caption">Part ${i+1} of ${UNITS.length}</span><h2>${esc(u.title)}</h2><p class="mins">About ${u.mins} minutes</p></header>${groupBlocks(u.blocks)}${checkHTML(u)}<div class="nav"><button class="btn ghost" data-go="${i-1}" ${i===0?"hidden":""}>Back</button><span class="gate" id="gate"></span><button class="btn" id="nextBtn" data-go="${i+1}">${isLast?"Go to the final check":"Next lesson"}</button></div></article>`;
+  // def builder
+  u.blocks.forEach((b,bi)=>{ if(b.t==="def") showDef(bi,0,b); });
+  // restore check answers
+  u.check.forEach((q,qi)=>{ const a=S.answers[u.id+"-"+qi]; if(a!==undefined) markQ(u,qi,a,true); });
+  updateGate(u);
+}
+function showDef(id, pi, b){
+  b = b || UNITS[S.cur].blocks[id]; const p=b.parts[pi];
+  const root = main.querySelector(`[data-def="${id}"]`);
+  root.querySelectorAll(".def-tab").forEach((t,i)=>{ t.setAttribute("aria-selected", i===pi); if(i===pi) t.classList.add("seen"); });
+  root.querySelector(".def-panel").setAttribute("aria-labelledby", `dt${id}-${pi}`);
+  root.querySelector(".def-panel").innerHTML = `<p>${p.plain}</p><p class="legal"><b>The law says:</b> ${esc(p.legal)}</p><div><p class="muted" style="font-size:.85rem;margin-bottom:6px">Examples</p><div class="chips">${p.ex.map(e=>`<span class="chip">${esc(e)}</span>`).join("")}</div></div>${pi<b.parts.length-1?`<div><button class="btn ghost" data-dtab="${pi+1}">Next part →</button></div>`:""}`;
+}
+function markQ(u, qi, a, silent){
+  const q=u.check[qi], box=main.querySelector(`[data-q="${qi}"]`); if(!box) return;
+  const btns=box.querySelectorAll(".opt"); btns.forEach(b=>b.classList.remove("right","wrong"));
+  const ok = a===q.a;
+  btns[a].classList.add(ok?"right":"wrong");
+  box.querySelector(".qfb").innerHTML = ok ? `<div class="fb good"><strong>Correct.</strong><span>${esc(q.why)}</span></div>` : `<div class="fb no"><strong>Not quite. Try again.</strong><span>Think back to the lesson above.</span></div>`;
+  if(ok) btns.forEach(b=>b.disabled=true);
+}
+function updateGate(u){
+  const right = u.check.filter((q,qi)=>S.answers[u.id+"-"+qi]===q.a).length;
+  const all = right===u.check.length;
+  if(all && !S.done[u.id]){ S.done[u.id]=true; save(); renderRail(); }
+  $("#chStatus").textContent = `${right} of ${u.check.length} correct`;
+  $("#nextBtn").disabled = !S.done[u.id];
+  $("#gate").textContent = S.done[u.id] ? "" : "Answer the pop quiz to keep going.";
+}
+
+/* ---------- quiz ---------- */
+let QZ = null;
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];} return a; }
+function newQuiz(){ QZ = {qs: shuffle(POOL).slice(0,QUIZ_LEN), i:0, score:0, picked:null}; }
+function renderQuiz(){
+  if(!QZ) newQuiz();
+  if(QZ.i>=QZ.qs.length) return renderResult();
+  const q = QZ.qs[QZ.i];
+  main.innerHTML = `<article class="lesson" id="lessonText"><header class="splash"><span class="caption">Final check · Question ${QZ.i+1} of ${QZ.qs.length}</span><h2>${esc(q.q)}</h2><p class="mins">Score so far: ${QZ.score} · You need ${PASS} of ${QUIZ_LEN} to earn your certificate.</p></header><div class="panel q" data-fq>${q.o.map((o,oi)=>`<button class="opt" data-fa="${oi}">${esc(o)}</button>`).join("")}<div class="qfb" aria-live="polite"></div></div><div class="nav"><span></span><button class="btn" id="fqNext" disabled>${QZ.i===QZ.qs.length-1?"See my score":"Next question"}</button></div></article>`;
+}
+function answerQuiz(oi){
+  if(QZ.picked!==null) return; QZ.picked=oi;
+  const q=QZ.qs[QZ.i], ok=oi===q.a; if(ok) QZ.score++;
+  const btns=main.querySelectorAll("[data-fa]"); btns.forEach(b=>b.disabled=true);
+  btns[q.a].classList.add("right"); if(!ok) btns[oi].classList.add("wrong");
+  main.querySelector(".qfb").innerHTML = `<div class="fb ${ok?"good":"no"}"><strong>${ok?"Correct.":"Not this time."}</strong><span>${esc(q.why)}</span></div>`;
+  const n=$("#fqNext"); n.disabled=false; n.focus();
+}
+function renderResult(){
+  const s=QZ.score, pass=s>=PASS;
+  if(S.best===null || s>S.best) S.best=s;
+  if(pass && !S.passedAt) S.passedAt=new Date().toISOString();
+  save(); renderRail();
+  main.innerHTML = `<article class="lesson" id="lessonText"><header class="splash"><span class="caption">Final check</span><h2>${pass?"You did it!":"Almost there!"}</h2></header><div class="burst-wrap"><div class="burst ${pass?"":"miss"}">${s} / ${QUIZ_LEN}</div></div><p class="lead panel">${pass?`You passed the final check. Your certificate is ready.`:`You need ${PASS} correct to earn your certificate. Look back at any lesson, then try again. You'll get a new mix of questions.`}</p><div class="row">${pass?`<button class="btn gold" data-go="${QUIZ_IDX+1}">Get my certificate</button>`:""}<button class="btn ghost" id="retake">Take it again</button><button class="btn ghost" data-go="0">Review lessons</button></div></article>`;
+}
+
+/* ---------- certificate ---------- */
+function renderCert(){
+  const d = S.passedAt ? new Date(S.passedAt) : new Date();
+  main.innerHTML = `<article class="lesson" id="lessonText"><header class="splash"><span class="caption">The end · Certificate</span><h2>Nice work, ${esc(S.name||"Tiger")}!</h2></header><div class="panel"><p>You completed all 10 lessons and passed the final check with a best score of <b>${S.best} / ${QUIZ_LEN}</b>.</p><div class="field"><label for="certName">Name on certificate</label><input id="certName" maxlength="60" value="${esc(S.name)}" placeholder="First and last name"></div></div><div class="cert-wrap"><canvas id="cert" width="1650" height="1275" role="img" aria-label="Certificate of completion"></canvas></div><div class="row"><button class="btn gold" id="dlBtn" hidden>Save certificate (PNG)</button><button class="btn ghost" id="prBtn" hidden>Print certificate</button><span class="status" id="dlStatus"></span></div><p class="muted" id="dlHelp">To turn it in, save the image or take a screenshot and submit it the way your teacher asks.</p></article>`;
+  drawCert(d);
+  initDownloads();
+}
+function code(){ const str=(S.name||"")+"|"+S.passedAt+"|"+S.best; let h=0; for(const c of str){h=(h*31+c.charCodeAt(0))>>>0;} return "ABR-"+h.toString(36).toUpperCase().padStart(6,"0").slice(-6); }
+async function drawCert(d){
+  try{ await document.fonts.ready; }catch(e){}
+  const c=$("#cert"); if(!c) return; const g=c.getContext("2d"); const W=c.width,H=c.height;
+  const INK="#141210", GOLD="#F5B800", PALE="#FFF0B8", RED="#E5432E";
+  const L="'Comic Neue', 'Comic Sans MS', sans-serif", D="'Bangers', Impact, sans-serif", B="'Atkinson Hyperlegible', sans-serif";
+  g.fillStyle="#F4F1E8"; g.fillRect(0,0,W,H);
+  g.fillStyle="#E3DCC6"; for(let y=10;y<H;y+=22) for(let x=(y/22%2)*11+10;x<W;x+=22){ g.beginPath(); g.arc(x,y,2.6,0,7); g.fill(); }
+  // main panel with drop shadow
+  const px=70, py=70, pw=W-140, ph=H-140;
+  g.fillStyle=INK; g.fillRect(px+14,py+14,pw,ph);
+  g.fillStyle="#FFFFFF"; g.fillRect(px,py,pw,ph); g.lineWidth=8; g.strokeStyle=INK; g.strokeRect(px,py,pw,ph);
+  // sunburst corner
+  g.save(); g.beginPath(); g.rect(px,py,pw,ph); g.clip(); g.translate(W-180,py+40); g.fillStyle=PALE;
+  for(let a=0;a<Math.PI*2;a+=Math.PI/12){ g.beginPath(); g.moveTo(0,0); g.arc(0,0,520,a,a+Math.PI/24); g.closePath(); g.fill(); }
+  g.restore();
+  // caption box
+  g.font="700 30px "+L; const cap=(SCHOOL.name+" · "+SCHOOL.district).toUpperCase(); const cw=g.measureText(cap).width+44;
+  g.fillStyle=GOLD; g.fillRect(px,py,cw,58); g.lineWidth=5; g.strokeRect(px,py,cw,58); g.fillStyle=INK; g.textAlign="left"; g.fillText(cap, px+22, py+40);
+  // title with offset shadow
+  g.textAlign="center"; g.font="140px "+D;
+  g.fillStyle=INK; g.fillText("CERTIFICATE OF COMPLETION", W/2+7, 300+7);
+  g.fillStyle=GOLD; g.fillText("CERTIFICATE OF COMPLETION", W/2, 300); g.lineWidth=4; g.strokeStyle=INK; g.strokeText("CERTIFICATE OF COMPLETION", W/2, 300);
+  g.font="700 38px "+L; g.fillStyle=INK; g.fillText("Presenting the newest ABR expert:", W/2, 385);
+  const nm=(S.name||"").trim()||"__________________________";
+  let fs=124; g.font=`${fs}px ${D}`; while(g.measureText(nm).width>W-520 && fs>60){fs-=4; g.font=`${fs}px ${D}`;}
+  g.fillStyle=INK; g.fillText(nm, W/2, 520);
+  g.fillStyle=RED; g.fillRect(W/2-320,546,640,10);
+  g.font="400 36px "+B; g.fillStyle=INK;
+  g.fillText("completed all 10 parts of Tigers Know the ABR, a self-study on", W/2, 625);
+  g.font="700 40px "+B; g.fillText("New Jersey's Anti-Bullying Bill of Rights Act (HIB)", W/2, 678);
+  // score burst
+  const bx=250, by=960, r1=125, r2=92; g.beginPath();
+  for(let i=0;i<40;i++){ const a=i*Math.PI/20 - Math.PI/2, r=i%2?r2:r1; g.lineTo(bx+Math.cos(a)*r, by+Math.sin(a)*r); } g.closePath();
+  g.fillStyle=INK; g.save(); g.translate(8,8); g.fill(); g.restore(); g.fillStyle=GOLD; g.fill(); g.lineWidth=5; g.strokeStyle=INK; g.stroke();
+  g.fillStyle=INK; g.font="62px "+D; g.fillText(`${S.best}/${QUIZ_LEN}`, bx, by+12); g.font="700 22px "+L; g.fillText("FINAL CHECK", bx, by+46);
+  // commitments as a speech bubble
+  const commits = S.pledge.slice(); if(S.custom.trim()) commits.push(S.custom.trim());
+  if(commits.length){ const list=commits.slice(0,4); const bxL=430, byT=830, bw=W-px-bxL-60, bh=70+list.length*44;
+    g.beginPath(); g.roundRect(bxL,byT,bw,bh,36); g.fillStyle="#FFFFFF"; g.fill(); g.lineWidth=5; g.strokeStyle=INK; g.stroke();
+    g.textAlign="left"; g.font="34px "+D; g.fillStyle=RED; g.fillText("MY COMMITMENTS!", bxL+34, byT+52);
+    g.font="700 28px "+L; g.fillStyle=INK;
+    list.forEach((t,i)=>{ let s=t; while(g.measureText(s).width>bw-80 && s.length>10) s=s.slice(0,-2); if(s!==t) s=s.trim()+"…"; g.fillText("★ "+s, bxL+34, byT+98+i*44); }); }
+  g.textAlign="left"; g.font="700 26px "+L; g.fillStyle=INK;
+  g.fillText("Date: "+d.toLocaleDateString("en-US",{year:"numeric",month:"long",day:"numeric"}), px+40, py+ph-36);
+  g.textAlign="right"; g.fillText("Completion code: "+code(), px+pw-40, py+ph-36);
+}
+async function initDownloads(){
+  const b=$("#dlBtn"); if(!b) return;
+  if(!window.claude){ // standalone site (e.g., GitHub Pages): native download + print work here
+    const fn=()=>("ABR certificate "+(S.name||"student")).replace(/[^\w\- ]+/g,"").trim()+".png";
+    b.hidden=false; $("#prBtn").hidden=false; $("#dlHelp").textContent="Download or print your certificate, or turn it in the way your teacher asks.";
+    b.onclick=()=>{ const a=document.createElement("a"); a.download=fn(); a.href=$("#cert").toDataURL("image/png"); document.body.appendChild(a); a.click(); a.remove(); $("#dlStatus").textContent="Downloaded."; };
+    $("#prBtn").onclick=()=>window.print();
+    return; }
+  let dl=null; try{ dl = window.claude.use ? await window.claude.use("downloads") : null; }catch(e){}
+  if(!dl) return;
+  b.hidden=false; $("#dlHelp").textContent="You can print the saved image or submit it the way your teacher asks.";
+  b.onclick = ()=>{ $("#cert").toBlob(async blob=>{ const st=$("#dlStatus"); try{ const fn=("ABR certificate "+(S.name||"student")).replace(/[^\w\- ]+/g,"").trim()+".png"; await dl.save({filename:fn, data:blob}); st.textContent="Saved."; }catch(e){ st.textContent = e && e.code==="declined" ? "Save cancelled." : "Saving isn't available here. Take a screenshot instead."; } },"image/png"); };
+}
+
+/* ---------- router ---------- */
+function go(i){
+  if(i<0) return; if(!isUnlocked(i)) return;
+  stopRead(); S.cur=i; save(); renderRail();
+  if(i<QUIZ_IDX) renderUnit(i); else if(i===QUIZ_IDX){ if(QZ && QZ.i>=QZ.qs.length) newQuiz(); renderQuiz(); } else renderCert();
+  main.focus({preventScroll:true}); window.scrollTo({top:0,behavior:"smooth"});
+}
+
+/* ---------- events ---------- */
+document.addEventListener("click", e=>{
+  const t=e.target.closest("button"); if(!t) return;
+  if(t.dataset.go!==undefined){ go(+t.dataset.go); return; }
+  if(t.dataset.dtab!==undefined){ const root=t.closest(".def")||main.querySelector("[data-def]"); showDef(+root.dataset.def, +t.dataset.dtab); return; }
+  if(t.dataset.flip!==undefined){ const b=UNITS[S.cur].blocks.find(x=>x.t==="flips"); const c=b.cards[+t.dataset.flip]; const open=!t.classList.contains("open");
+    t.classList.toggle("open",open); t.setAttribute("aria-pressed",open);
+    t.querySelector(".side-label").textContent=open?"Fact!":"Myth!"; t.querySelector(".ftxt").innerHTML=open?c.f:esc(c.m); t.querySelector(".hint").textContent=open?"Tap to see the myth again":"Tap to see the fact"; return; }
+  if(t.dataset.pick){ const box=t.closest(".pair"); const p=UNITS[S.cur].blocks.find(x=>x.t==="pairs").items[+box.dataset.pair];
+    box.querySelectorAll(".pair-opt").forEach(o=>o.classList.toggle("picked",o===t)); const ok=t.dataset.pick===p.ans;
+    box.querySelector(".pair-fb").innerHTML=`<div class="fb ${ok?"good":"meh"}"><strong>${ok?"Good eye.":"Look again."} Situation ${p.ans.toUpperCase()} has more signs to look into.</strong><ul class="tidy">${p.clues.map(c=>`<li>${esc(c)}</li>`).join("")}</ul><span>Either way, if you're unsure, tell an adult. The school decides whether it's HIB.</span></div>`; return; }
+  if(t.dataset.mo!==undefined){ const box=t.closest(".miss"); const blk=UNITS[S.cur].blocks.find(x=>x.t==="missing"); const it=blk.items[+box.dataset.miss]; const ok=+t.dataset.mo===it.a;
+    box.querySelectorAll(".opt").forEach((x,xi)=>{ x.classList.remove("sel-best","sel-no"); if(xi===it.a) x.classList.add("sel-best"); }); if(!ok) t.classList.add("sel-no");
+    box.querySelector(".ch-fb").innerHTML=`<div class="fb ${ok?"good":"meh"}"><strong>${ok?"You got it.":"Take another look."} Answer: ${esc(blk.opts[it.a])}</strong><span>${esc(it.fb)}</span></div>`; return; }
+  if(t.dataset.ch!==undefined){ const box=t.closest(".choose"); const idx=[...main.querySelectorAll(".choose")].indexOf(box); const b=UNITS[S.cur].blocks.filter(x=>x.t==="choose")[idx]; const o=b.opts[+t.dataset.ch];
+    box.querySelectorAll(".opt").forEach(x=>x.classList.remove("sel-best","sel-ok","sel-no")); t.classList.add(o.k==="best"?"sel-best":o.k==="meh"?"sel-ok":"sel-no");
+    box.querySelector(".ch-fb").innerHTML=`<div class="fb ${o.k==="best"?"good":o.k==="meh"?"meh":"no"}"><strong>${o.k==="best"?"Strong choice.":o.k==="meh"?"Partly there.":"Think again."}</strong><span>${esc(o.fb)}</span></div>`; return; }
+  if(t.dataset.qa!==undefined){ const u=UNITS[S.cur]; const qi=+t.closest("[data-q]").dataset.q; const a=+t.dataset.qa; S.answers[u.id+"-"+qi]=a; save(); markQ(u,qi,a); updateGate(u); return; }
+  if(t.dataset.fa!==undefined){ answerQuiz(+t.dataset.fa); return; }
+  if(t.id==="fqNext"){ QZ.i++; QZ.picked=null; renderQuiz(); main.focus({preventScroll:true}); window.scrollTo({top:0,behavior:"smooth"}); return; }
+  if(t.id==="retake"){ newQuiz(); renderQuiz(); return; }
+  if(t.id==="sizeBtn"){ S.big=!S.big; document.body.classList.toggle("big",S.big); t.setAttribute("aria-pressed",S.big); save(); return; }
+  if(t.id==="readBtn"){ reading?stopRead():startRead(); return; }
+});
+document.addEventListener("input", e=>{
+  const t=e.target;
+  if(t.id==="nameIn"||t.id==="certName"){ S.name=t.value; save(); if(t.id==="certName") drawCert(S.passedAt?new Date(S.passedAt):new Date()); }
+  if(t.dataset && t.dataset.pl!==undefined){ const v=t.dataset.pl; S.pledge = t.checked ? [...new Set([...S.pledge,v])] : S.pledge.filter(x=>x!==v); save(); }
+  if(t.id==="plCustom"){ S.custom=t.value; save(); }
+});
+
+/* ---------- read aloud ---------- */
+let reading=false;
+const synth = ("speechSynthesis" in window) ? window.speechSynthesis : null;
+if(synth){ $("#readBtn").hidden=false; }
+function startRead(){ try{ const el=$("#lessonText"); if(!el) return; const txt=[...el.querySelectorAll("h2,p,li,h3,h4,.tl-item,.def-panel,.q-t,.ftxt,.pair-opt")].map(n=>n.innerText).join(". ");
+  const u=new SpeechSynthesisUtterance(txt); u.rate=0.95; u.onend=()=>{reading=false;$("#readBtn").setAttribute("aria-pressed","false");$("#readBtn").textContent="Read aloud";};
+  synth.cancel(); synth.speak(u); reading=true; $("#readBtn").setAttribute("aria-pressed","true"); $("#readBtn").textContent="Stop reading"; }catch(e){ $("#readBtn").hidden=true; } }
+function stopRead(){ try{ synth && synth.cancel(); }catch(e){} reading=false; const b=$("#readBtn"); if(b){b.setAttribute("aria-pressed","false"); b.textContent="Read aloud";} }
+
+/* ---------- boot ---------- */
+if(!isUnlocked(S.cur)) S.cur=0;
+go(S.cur);
+</script>
+</body>
+</html>
